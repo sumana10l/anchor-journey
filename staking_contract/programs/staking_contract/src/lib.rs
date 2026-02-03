@@ -302,6 +302,7 @@ pub fn unpause_conversions(ctx: Context<AdminOnly>) -> Result<()> {
     Ok(())
 }
 
+
 #[derive(Accounts)]
 pub struct InitializeTreasury<'info> {
     #[account(mut)]
@@ -331,7 +332,6 @@ pub struct FundTreasury<'info> {
         constraint = treasury.admin == admin.key() @ StakeError::Unauthorized
     )]
     pub treasury: Account<'info, Treasury>,
-    
     pub system_program: Program<'info, System>,
 }
 
@@ -377,7 +377,7 @@ pub struct Unstake<'info> {
         mut,
         seeds = [b"client", user.key.as_ref()],
         bump = pda_account.bump,
-        constraint = pda_account.owner == user.key() @ StakeError::Unauthorized
+        constraint = pda_account.owner == user.key() @ StakeError::Unauthorized 
     )]
     pub pda_account: Account<'info, StakeAccount>,
 }
@@ -391,7 +391,7 @@ pub struct ClaimPoints<'info> {
         mut,
         seeds = [b"client", user.key().as_ref()],
         bump = pda_account.bump,
-        constraint = pda_account.owner == user.key() @ StakeError::Unauthorized 
+        constraint = pda_account.owner == user.key() @ StakeError::Unauthorized
     )]
     pub pda_account: Account<'info, StakeAccount>
 }
@@ -439,6 +439,20 @@ pub struct GetTreasuryInfo<'info> {
     pub treasury: Account<'info, Treasury>,
 }
 
+#[derive(Accounts)]
+pub struct AdminOnly<'info> {
+    #[account(mut)]
+    pub admin: Signer<'info>,
+    
+    #[account(
+        mut,
+        seeds = [b"treasury"],
+        bump = treasury.bump,
+        constraint = treasury.admin == admin.key() @ StakeError::Unauthorized
+    )]
+    pub treasury: Account<'info, Treasury>,
+}
+
 #[account]
 pub struct StakeAccount {
     pub owner: Pubkey,
@@ -455,20 +469,6 @@ pub struct Treasury {
     pub total_paid_out: u64,
     pub bump: u8,
     pub paused: bool,
-}
-
-#[derive(Accounts)]
-pub struct AdminOnly<'info> {
-    #[account(mut)]
-    pub admin: Signer<'info>,
-    
-    #[account(
-        mut,
-        seeds = [b"treasury"],
-        bump = treasury.bump,
-        constraint = treasury.admin == admin.key() @ StakeError::Unauthorized
-    )]
-    pub treasury: Account<'info, Treasury>,
 }
 
 #[error_code]
