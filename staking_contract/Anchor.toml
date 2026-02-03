@@ -12,7 +12,7 @@ staking_contract = "EFpkThxpS78297Lor9as1hW9pWa3My9kc1k1auiyS4b4"
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "localnet"
+cluster = "devnet"
 wallet = "~/.config/solana/id.json"
 
 [scripts]

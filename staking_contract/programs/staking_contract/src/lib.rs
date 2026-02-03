@@ -498,3 +498,14 @@ pub enum StakeError {
     #[msg("Point conversions are temporarily paused")]
     ConversionsPaused,
 }
+
+// anchor build
+// solana config set --url devnet
+// solana config get
+// solana airdrop 2
+// solana address [ copy the address and drop some solana from https://faucet.solana.com/]
+// solana balance
+// anchor deploy
+
+//Program Id: 3rPT645rtmEscwsCtQVSZmZPYTPH7YUuKsTnyuNfTkAY
+//Signature: UATti1tPj8hKms31De1V62At2xMj6RH8vMyaD43623awmyRNZd8nry7SuZJ6TptM22yEe5KBAiWKkgyLSB3n1J2
