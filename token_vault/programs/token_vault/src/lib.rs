@@ -8,7 +8,7 @@ use errors::*;
 use instructions::*;
 use state::*;
 
-declare_id!("EwbYP92VR6QeHSUpSrV7mGQhhqWNr8fE3z4uP8u4uvGj");
+declare_id!("6sdzRZMrzLVi5pngFW1EuS4V9KUyJ4txoJFtapNvTYES");
 
 #[program]
 pub mod token_vault {
@@ -55,3 +55,15 @@ pub mod token_vault {
     }
     
 }
+
+// anchor build
+// solana config set --url devnet
+// solana config get
+// solana airdrop 2
+// solana address [ copy the address and drop some solana from https://faucet.solana.com/]
+// solana balance
+// anchor deploy
+
+// Program Id: 6sdzRZMrzLVi5pngFW1EuS4V9KUyJ4txoJFtapNvTYES
+
+// Signature: 4rp8xm6rcUTTiuGrm9MqhqfnWtmRwPHKZtkXxjdCM8c6MkxAfm6NYiX5rSbgFJzSwK2sARrxeBLRATA9thANPJyU
